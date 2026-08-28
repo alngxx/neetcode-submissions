@@ -1,0 +1,15 @@
+class Solution:
+    def findPeakElement(self, nums: List[int]) -> int:
+        """ Simple Binary Search: O(log n)
+        1. If nums[mid] > nums[mid + 1]: peak is mid, or on the left
+        2. Else nums[mid] < num[mid + 1]: peak is to the right
+        3. Loop stops when l == r, that's peak
+        """
+        l, r = 0, len(nums) - 1
+        while l < r:
+            mid = (l + r) // 2
+            if nums[mid] > nums[mid + 1]:
+                r = mid
+            else:
+                l = mid + 1
+        return l
